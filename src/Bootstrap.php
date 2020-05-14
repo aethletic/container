@@ -4,15 +4,11 @@ namespace Aethletic\Container;
 
 class Bootstrap
 {
-    public static function autoload($filesPathArray)
+    public static function autoload($dirs)
     {
-        foreach ($filesPathArray as $filePath) {
-            if (is_dir($filePath)) {
-                foreach (glob($filePath) as $file) {
-                    require_once $file;
-                }
-            } else {
-                require_once $filePath;
+        foreach ($dirs as $dir) {
+            foreach (glob($dir) as $key => $file) {
+                require_once $file;
             }
         }
     }
