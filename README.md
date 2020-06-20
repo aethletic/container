@@ -48,6 +48,7 @@ Bootstrap::autoload([
 
 Other examples:
 ```php 
+$app = App;
 $app->register('db', function() {
     $factory = new \Database\Connectors\ConnectionFactory();
     return $factory->make(array(
@@ -60,9 +61,12 @@ $app->register('db', function() {
         'lazy'      => true,
     ));
 });
+
+$app->db()->table('users')->select('id', '1337')->get();
 ```
 
 ```php
+$app = App;
 $app->register('twig', function() {
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/app/views');
     return new \Twig\Environment($loader, [
@@ -71,4 +75,17 @@ $app->register('twig', function() {
         'debug' => true,
     ]);
 });
+
+echo $app->twig()->render('index.html', ['name' => 'Alex']);
+```
+
+```php
+$app = App;
+$app->register('redis', function() {
+    $redis = new \Redis;
+    $redis->connect('127.0.0.1');
+    return $redis;
+});
+
+$app->redis()->set('hello', 'world');
 ```
