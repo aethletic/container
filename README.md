@@ -41,6 +41,12 @@ Call instance:
 $app->call(string $name [, array $params]);
 ```
 
+Or you can call as:
+$app->set('methodName', function ($param1, $param2) { 
+ // code ...
+});
+$app->methodName('valueOfParam1', 'valueOfParam2');
+
 ## Note
 You can use static and non-static methods.
 
