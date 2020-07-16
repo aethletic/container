@@ -2,7 +2,7 @@
 
 namespace Aethletic\App;
 
-class Core
+class Container
 {
     public static $app;
     private static $is_init = false;
@@ -28,6 +28,12 @@ class Core
         }
 
         if (func_num_args() == 2 && !is_callable($callback)) {
+            $callback = $call;
+            $call = false;
+        }
+
+        if (func_num_args() == 3 && !is_callable($callback)) {
+            $params = $callback;
             $callback = $call;
             $call = false;
         }
