@@ -24,6 +24,7 @@ $app->set([
 ]);
 ```
 `$callback` - It can be an `anonymous function`/`function`/`class`. It can also be the value of an array `variable`, `string`, `number`, etc.
+
 `$one_time` - If `true`, then callback will be executed one time, else, callback will be executed every time when he called.
 
 ### get()
