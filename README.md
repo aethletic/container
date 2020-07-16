@@ -6,6 +6,8 @@
 composer require aethletic/container
 ```
 
+## Methods
+
 ### set()
 Store data:
 ```php
