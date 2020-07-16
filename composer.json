@@ -2,7 +2,7 @@
     "name": "aethletic/container",
     "description" : "Simple container.",
     "license": "MIT",
-    "keywords": ["container"],
+    "keywords": ["container", "application"],
     "authors": [
         {
             "name": "Aethletic",
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Aethletic\\Container\\": "src"
+            "Aethletic\\App\\": "src"
         }
     }
 }

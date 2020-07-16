@@ -1,6 +1,6 @@
 <?php
 
-namespace Aethletic\Container;
+namespace Aethletic\App;
 
 class Bootstrap
 {
