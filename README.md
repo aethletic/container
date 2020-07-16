@@ -44,7 +44,7 @@ $app->call(string $name [, array $params]);
 You can use static and non-static methods.
 
 ```php
-use Aethletic\App\Core as App;
+use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -56,7 +56,7 @@ print_r(App::get('hello')); // world
 
 ## Examples:
 ```php 
-use Aethletic\App\Core as App;
+use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -78,7 +78,7 @@ $app->db()->table('users')->select('id', '1337')->get();
 ```
 
 ```php
-use Aethletic\App\Core as App;
+use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -96,7 +96,7 @@ echo $app->twig()->render('index.html', ['name' => 'Alex']);
 ```
 
 ```php
-use Aethletic\App\Core as App;
+use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
