@@ -87,6 +87,45 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
+App::set('blade', $one_time = true, function () {
+  return new duncan3dc\Laravel\Blade("/var/www/views", "/var/www/cache/views");
+});
+```
+Or you can use the "@" sign in front of the class name, and pass the call parameters in the array
+```php
+App::set('blade', $one_time = true, '@duncan3dc\Laravel\Blade', ["/var/www/views", "/var/www/cache/views"]);
+
+print_r(get_class_methods(App::blade()));
+
+// output:
+// Array
+// (
+//     [0] => setInstance
+//     [1] => getInstance
+//     [2] => addExtension
+//     [3] => extend
+//     [4] => directive
+//     [5] => aliasComponent
+//     [6] => component
+//     [7] => if
+//     [8] => addPath
+//     [9] => exists
+//     [10] => share
+//     [11] => composer
+//     [12] => creator
+//     [13] => addNamespace
+//     [14] => replaceNamespace
+//     [15] => file
+//     [16] => make
+//     [17] => render
+// )
+```
+
+```php 
+use Aethletic\App\Container as App;
+
+require_once './vendor/autoload.php';
+
 $app = new App;
 $app->set('db', $one_time = true, function() {
     $factory = new \Database\Connectors\ConnectionFactory();
