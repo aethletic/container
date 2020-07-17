@@ -7,6 +7,7 @@ composer require aethletic/container
 ```
 
 ## Methods
+> **NOTICE:** All methods support static and non-static calling
 
 ### set()
 Store data:
