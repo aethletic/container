@@ -77,4 +77,10 @@ class Container
             new self;
         }
     }
+    
+    public function self()
+    {
+      self::isInit();
+      return self::$app;
+    }
 }
