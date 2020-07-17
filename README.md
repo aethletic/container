@@ -75,7 +75,7 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
-$app = new App;
+$app = App::self();
 $app->set('hello', 'world');
 
 print_r(App::get('hello')); // world
@@ -126,7 +126,7 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
-$app = new App;
+$app = App::self();
 $app->set('db', $one_time = true, function() {
     $factory = new \Database\Connectors\ConnectionFactory();
     return $factory->make(array(
@@ -148,7 +148,7 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
-$app = new App;
+$app = App::self();
 $app->set('twig', $one_time = true, function () {
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/app/views');
     return new \Twig\Environment($loader, [
@@ -166,7 +166,7 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
-$app = new App;
+$app = App::self();
 $app->set('redis', $one_time = true, function () {
     $redis = new \Redis;
     $redis->connect('127.0.0.1');
