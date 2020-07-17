@@ -126,6 +126,15 @@ use Aethletic\App\Container as App;
 
 require_once './vendor/autoload.php';
 
+App::set('router', true, '@Bramus\Router\Router');
+App::router()->get('/home', 'HomeController@index');
+```
+
+```php 
+use Aethletic\App\Container as App;
+
+require_once './vendor/autoload.php';
+
 $app = App::self();
 $app->set('db', $one_time = true, function() {
     $factory = new \Database\Connectors\ConnectionFactory();
