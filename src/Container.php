@@ -82,7 +82,7 @@ class Container
         }
     }
 
-    public function self()
+    public self function self()
     {
       self::isInit();
       return self::$app;
