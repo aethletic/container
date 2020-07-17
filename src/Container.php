@@ -23,7 +23,13 @@ class Container
             $call = $array['one_time'] ?? false;
             $callback = $array['callback'];
             $params = $array['params'];
-            self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
+
+            if (!is_callable($callback) && stripos($callback, '@') !== false) {
+              self::$app->$method = self::newInstance($callback, $params);
+            } else {
+              self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
+            }
+
             return;
         }
 
@@ -32,13 +38,11 @@ class Container
             $call = false;
         }
 
-        if (func_num_args() == 3 && !is_callable($callback)) {
-            $params = $callback;
-            $callback = $call;
-            $call = false;
+        if (!is_callable($callback) && stripos($callback, '@') !== false) {
+          self::$app->$method = self::newInstance($callback, $params);
+        } else {
+          self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
         }
-
-        self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
     }
 
     public static function get($method, $params = [])
@@ -77,10 +81,17 @@ class Container
             new self;
         }
     }
-    
+
     public function self()
     {
       self::isInit();
       return self::$app;
+    }
+
+    private static function newInstance($callback, $params = [])
+    {
+      $callback = str_replace('@', '', $callback);
+      $class = new \ReflectionClass($callback);
+      return $class->newInstanceWithoutConstructor($params);
     }
 }
