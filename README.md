@@ -49,6 +49,23 @@ $app->set('methodName', function ($param1, $param2) {
 $app->methodName('valueOfParam1', 'valueOfParam2');
 ```
 
+## self()
+Return self instance.
+```php
+App::self()
+```
+
+```php
+use Aethletic\App\Container as App;
+
+require_once './vendor/autoload.php';
+
+App::set('hello', 'world');
+$app = App::self();
+
+print_r($app->get('hello')); // world
+```
+
 ## Note
 You can use static and non-static methods.
 
