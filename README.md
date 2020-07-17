@@ -129,6 +129,32 @@ require_once './vendor/autoload.php';
 App::set('router', true, '@Bramus\Router\Router');
 App::router()->get('/home', 'HomeController@index');
 ```
+You can define new methods like:
+```php
+use Aethletic\App\Container as App;
+
+require_once './vendor/autoload.php';
+
+// get app instance
+$app = App::self();
+
+// define global router
+$app->set('router', true, '@Bramus\Router\Router');
+
+// map new "any" method
+$app->set('any', true, function ($pattern, $callback) use ($app) {
+  return $app->router()->any($patter, $callback);
+});
+
+// map new "run" method
+$app->set('run', true, function () use ($app) {
+  return $app->router()->run();
+});
+
+// now we can use our "any" and "run" methods
+$app->any('/home', 'HomeController@index');
+$app->run();
+```
 
 ```php 
 use Aethletic\App\Container as App;
