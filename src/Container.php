@@ -38,11 +38,13 @@ class Container
             $call = false;
         }
 
-        if (!is_callable($callback) && stripos($callback, '@') !== false) {
-          self::$app->$method = self::newInstance($callback, $params);
-        } else {
-          self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
+        if (!is_callable($callback) && is_string($callback)) {
+          if (stripos($callback, '@') !== false) {
+            return self::$app->$method = self::newInstance($callback, $params);
+          }
         }
+
+        self::$app->$method = $call ? call_user_func_array($callback, $params) : $callback;
     }
 
     public static function get($method, $params = [])
@@ -62,6 +64,8 @@ class Container
         if (isset($this->$method)) {
             $func = $this->$method;
             return is_callable($func) ? call_user_func_array($func, $args) : $func;
+        } else {
+          return 'CONTAINER_NEXT_CALL'; // for extends __call method
         }
     }
 
@@ -72,6 +76,8 @@ class Container
         if (isset(self::$app->$method)) {
             $func = self::$app->$method;
             return is_callable($func)  ? call_user_func_array($func, $args) : $func;
+        } else {
+          return 'CONTAINER_NEXT_CALL'; // for extends __call method
         }
     }
 
