@@ -5,8 +5,8 @@
     "keywords": ["container", "application"],
     "authors": [
         {
-            "name": "Aethletic",
-            "email": "hello@botify.ru"
+            "name": "chipslays",
+            "email": "hello@chipslays.ru"
         }
     ],
     "require": {
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Aethletic\\App\\": "src"
+            "Chipslays\\App\\": "src"
         }
     }
 }
