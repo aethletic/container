@@ -57,7 +57,7 @@ App::self()
 ```
 
 ```php
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -71,7 +71,7 @@ print_r($app->get('hello')); // world
 You can use static and non-static methods.
 
 ```php
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -83,7 +83,7 @@ print_r(App::get('hello')); // world
 
 ## Examples:
 ```php 
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -122,7 +122,7 @@ print_r(get_class_methods(App::blade()));
 ```
 
 ```php 
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -131,7 +131,7 @@ App::router()->get('/home', 'HomeController@index');
 ```
 You can define new methods like:
 ```php
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -157,7 +157,7 @@ $app->run();
 ```
 
 ```php 
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -179,7 +179,7 @@ $app->db()->table('users')->select('id', '1337')->get();
 ```
 
 ```php
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -197,7 +197,7 @@ echo $app->twig()->render('index.html', ['name' => 'Alex']);
 ```
 
 ```php
-use Aethletic\App\Container as App;
+use Chipslays\App\Container as App;
 
 require_once './vendor/autoload.php';
 
@@ -214,7 +214,7 @@ $app->redis()->set('hello', 'world');
 ## Util
 Autoload files:
 ```php
-use Aethletic\App\Bootstrap;
+use Chipslays\App\Bootstrap;
 
 require_once './vendor/autoload.php';
 
