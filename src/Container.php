@@ -1,6 +1,6 @@
 <?php
 
-namespace Aethletic\App;
+namespace Chipslays\App;
 
 class Container
 {
