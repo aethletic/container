@@ -3,7 +3,7 @@
 
 ## Install
 ```
-composer require aethletic/container
+composer require chipslays/container
 ```
 
 ## Methods
